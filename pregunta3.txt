@@ -1,0 +1,7 @@
+Se tendría que cambiar la clase Cuenta, se debería tener un atributo de tipo acumuladoDiario y que cada día se resetee a 0.
+El método pagar debería agregar una validación más, que antes de pagar se verifique si el monto que va a pagar hace que el acumuladoDiario exceda de 200.
+
+Se tendrían que adicionar casos de prueba en donde se hagan una serie de pagos y que luego se ejecute un pago que haga que se superen los 200 diarios y verificar si es que no lo permite.
+Además se debería probar que al inicio de cada día el acumuladoDiario se resetee a 0.
+
+En cuanto al riesgo habría que analizarse que tan factible es adicionar esto. LO que podría pasar es que haya una rotura en el flujo de funcionamiento de los pagos. Puede que ya no haya consistencia en la base de datos si es que esta no permite que se le reste al saldo menos de 200 soles diarios, pero la api por error admite un pago que hace que se superen los 200 diarios, esto podría generar una inconsistencia. Además podría significar que los usarios ya no puedan realizar transacciones si es que el acumuladoDiario no se actualiza a 0 al inicio de cada día.
